@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service.dto;
 
+import com.mycompany.myapp.domain.enumeration.UnitMeasurement;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,11 +11,40 @@ public class ProductDTO implements Serializable {
 
     private Long id;
 
-    private String description;
+    private String name;
 
+    private String description;
     private Double unitPrice;
 
     private Long quantityStock;
+
+    private UnitMeasurement unitMeasurement;
+
+    private byte[] photo;
+
+    public UnitMeasurement getUnitMeasurement() {
+        return unitMeasurement;
+    }
+
+    public void setUnitMeasurement(UnitMeasurement unitMeasurement) {
+        this.unitMeasurement = unitMeasurement;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

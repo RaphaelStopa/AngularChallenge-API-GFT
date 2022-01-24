@@ -18,6 +18,9 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "description")
     private String description;
 
@@ -45,6 +48,30 @@ public class Product implements Serializable {
     public Product id(Long id) {
         this.setId(id);
         return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UnitMeasurement getUnitMeasurement() {
+        return unitMeasurement;
+    }
+
+    public void setUnitMeasurement(UnitMeasurement unitMeasurement) {
+        this.unitMeasurement = unitMeasurement;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public void setId(Long id) {
