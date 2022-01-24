@@ -40,6 +40,12 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "password_hash", length = 60, nullable = false)
     private String password;
 
+    @JsonIgnore
+    @NotNull
+    @Size(min = 9, max = 15)
+    @Column(name = "cpf", length = 15, nullable = false)
+    private String cpf;
+
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
     private String firstName;
@@ -191,6 +197,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     @Override

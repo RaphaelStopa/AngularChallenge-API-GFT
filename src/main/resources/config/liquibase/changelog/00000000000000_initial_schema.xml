@@ -19,6 +19,9 @@
             <column name="login" type="varchar(50)">
                 <constraints unique="true" nullable="false" uniqueConstraintName="ux_user_login"/>
             </column>
+            <column name="cpf" type="varchar(15)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_user_cpf"/>
+            </column>
             <column name="password_hash" type="varchar(60)"/>
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
