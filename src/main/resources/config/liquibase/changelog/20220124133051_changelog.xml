@@ -1,13 +1,11 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-<!--    <changeSet author="Stopa (generated)" id="1643037951920-1">-->
-<!--        <addColumn tableName="product">-->
-<!--            <column name="photo_file" type="longblob"/>-->
-<!--        </addColumn>-->
-<!--    </changeSet>-->
-    <changeSet author="Stopa (generated)" id="1643037951920-2">
-        <addColumn tableName="product">
-            <column name="unit_measurement" type="varchar(255)"/>
+    <changeSet author="Stopa (generated)" id="1643041862624-1">
+        <addColumn tableName="sale">
+            <column name="user_id" type="bigint"/>
         </addColumn>
+    </changeSet>
+    <changeSet author="Stopa (generated)" id="1643041862624-3">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="sale" constraintName="FK52kdpjtn2van6d13gev6k7j8n" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
 </databaseChangeLog>

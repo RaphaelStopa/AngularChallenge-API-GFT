@@ -23,3 +23,16 @@ o mesmo vale para a unidade de medida do prodito nao fiz um enum
 teria que cadrastar e redirecionar
 
 importante falar que a validade do token tambem eh vista
+
+carrinho vvirou sale
+
+no itens da compra
+is finished == bolean
+add um boleano pq dai isto indica se a compra foi finalizada ou nao, ou mesmo retira do carrinho
+id do user para buscar pelo usuario os itents == == @OneToOne
+@JoinColumn(unique = true)
+private User user;
+
+falta a imagem eu fiz um blop mais teria que descomentar
+
+tirei o valor unitario do itens da compra pq qle ja referencia um produto

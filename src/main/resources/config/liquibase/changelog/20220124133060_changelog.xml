@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+        <changeSet id="20220124151309-1-data" author="jhipster" context="faker">
+            <loadData
+                      file="config/liquibase/fake-data/product.csv"
+                      separator=";"
+                      tableName="product"
+                      usePreparedStatements="true">
+                <column name="id" type="numeric"/>
+                <column name="description" type="string"/>
+                <column name="unit_price" type="numeric"/>
+                <column name="quantity_stock" type="numeric"/>
+                <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+            </loadData>
+        </changeSet>
+
+        <changeSet id="20220124162855-1-data" author="jhipster" context="faker">
+            <loadData
+                      file="config/liquibase/fake-data/sale.csv"
+                      separator=";"
+                      tableName="sale"
+                      usePreparedStatements="true">
+                <column name="id" type="numeric"/>
+                <column name="date" type="date"/>
+                <column name="value" type="numeric"/>
+                <column name="cep" type="string"/>
+                <column name="user_id" type="numeric"/>
+                <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+            </loadData>
+        </changeSet>
+
+
+        <changeSet id="20220124163649-1-data" author="jhipster" context="faker">
+            <loadData
+                      file="config/liquibase/fake-data/purchase_item.csv"
+                      separator=";"
+                      tableName="purchase_item"
+                      usePreparedStatements="true">
+                <column name="id" type="numeric"/>
+                <column name="is_finished" type="boolean"/>
+                <column name="product_quantity" type="numeric"/>
+                <column name="unitary_value" type="numeric"/>
+                <column name="total_price" type="numeric"/>
+                <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+            </loadData>
+        </changeSet>
+
+</databaseChangeLog>

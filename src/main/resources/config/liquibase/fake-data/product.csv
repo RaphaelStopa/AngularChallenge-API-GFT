@@ -1,11 +1,10 @@
-id;description;unit_price;quantity_stock
-1;Aço;31485;98311
-2;quantify monetize Consultant;34790;81149
-3;Computador Legacy deposit;46955;86953
-4;actuating deposit;44573;6255
-5;Metal;83023;40879
-6;Mato throughput Rodovia;82822;27988
-7;withdrawal âmbar;70316;51217
-8;intranet;16516;29161
-9;Pequeno digital Janeiro;37638;20520
-10;Security;94963;80588
+id;name;description;unit_price;quantity_stock;unit_measurement
+1;PlayStation 5;Video game da Sony;4300;10;OTHER
+2;Burrito Concelado el meximo;Burrito congelado para microondas;10;1000;KG
+3;Brinquedo para gato brinks;Deixe seu melhor amigo feliz. Feito...;35;231;KG
+4;Mouse multilaser;Mouse parable bla bla e ta ta ta.;43;87;OTHER
+5;Jogo Ghost Recon: Breakpoint - Xbox One;Esta incluso nesta edição de Day One: - Fuzil de assalto valor. - Conjunto Sentinel Mk.2 Assault (capacete, colete, calça);59;327;OTHER
+6;Nespresso Variado 50 Cápsulas De Café;Uma seleção feita com cafés intensos, equilibrados e mais suaves. A cada pausa com café, escolha entre um Ristretto Italiano, Firenze Arpeggio, Roma, Genova Livanto e o Volluto.;140;140;KG
+7;Ssd 240gb Plus - Sandisk;A SanDisk, pioneira em tecnologias de armazenamento de estado sólido e a marca de confiança dos profissionais da área, oferece maior velocidade e desempenho com o SanDisk SSD Plus.;248;69;OTHER
+8;Jogo Ps5 Demon's Souls;Jogo Ps5 Demon'S Souls Garanta hoje mesmo o seu Demon's Souls para PS5 O destino do mundo está em suas mãos em Demon's Souls para PS5 Playstation Studios e Bluepoint Games trazem o remake de um clássico do PlayStation 3;255;3;OTHER
+9;Game Sekiro: Shadows Die Twice - Ps4;Trilhe o caminho da vingança nesta aventura inédita da FromSoftware, os criadores da série Dark Souls;180;1;OTHER

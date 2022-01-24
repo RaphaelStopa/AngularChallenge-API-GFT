@@ -43,7 +43,7 @@
     "clientThemeVariant": "",
     "enableGradleEnterprise": false,
     "languages": ["en", "fr"],
-    "lastLiquibaseTimestamp": 1643037189000,
-    "entities": ["Product"]
+    "lastLiquibaseTimestamp": 1643042209000,
+    "entities": ["Product", "Sale", "PurchaseItem"]
   }
 }
