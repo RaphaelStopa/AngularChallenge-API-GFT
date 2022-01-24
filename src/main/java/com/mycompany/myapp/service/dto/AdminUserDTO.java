@@ -26,6 +26,9 @@ public class AdminUserDTO {
     @Size(max = 50)
     private String lastName;
 
+    @Size(min = 9, max = 15)
+    private String cpf;
+
     @Email
     @Size(min = 5, max = 254)
     private String email;
@@ -66,6 +69,14 @@ public class AdminUserDTO {
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
         this.authorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Long getId() {
