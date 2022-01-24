@@ -36,3 +36,5 @@ private User user;
 falta a imagem eu fiz um blop mais teria que descomentar
 
 tirei o valor unitario do itens da compra pq qle ja referencia um produto
+
+tinha que validar os campos do back end
