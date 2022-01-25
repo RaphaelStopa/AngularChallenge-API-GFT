@@ -42,6 +42,8 @@ public class PurchaseItemServiceImpl implements PurchaseItemService {
     public PurchaseItemDTO save(PurchaseItemDTO purchaseItemDTO) {
         log.debug("Request to save PurchaseItem : {}", purchaseItemDTO);
         PurchaseItem purchaseItem = purchaseItemMapper.toEntity(purchaseItemDTO);
+        var user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).orElseThrow();
+        purchaseItem.setUser(user);
         purchaseItem = purchaseItemRepository.save(purchaseItem);
         return purchaseItemMapper.toDto(purchaseItem);
     }

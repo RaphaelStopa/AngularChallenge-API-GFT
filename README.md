@@ -44,3 +44,7 @@ folta tratar todas as fotos
 centralizar o nem um produto cadrastrado
 
 o botao de excluir nao atualiza a pagina tambem e da um erro caso o id ja nao exista
+
+em oputro bug quanto as quantidades, se eu clilcar em quantidade de um e depois de outro ele soma
+
+nao mostrei a entidade de compra finalizada mais ela esta la

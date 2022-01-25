@@ -18,7 +18,7 @@ public class PurchaseItem implements Serializable {
     private Long id;
 
     @Column(name = "is_finished")
-    private Boolean isFinished;
+    private Boolean isFinished = false;
 
     @Column(name = "product_quantity")
     private Long productQuantity;
