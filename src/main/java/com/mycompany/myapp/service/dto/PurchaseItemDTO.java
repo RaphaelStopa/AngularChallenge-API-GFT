@@ -1,5 +1,8 @@
 package com.mycompany.myapp.service.dto;
 
+import com.mycompany.myapp.domain.Product;
+import com.mycompany.myapp.domain.Sale;
+import com.mycompany.myapp.domain.User;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,9 +17,45 @@ public class PurchaseItemDTO implements Serializable {
 
     private Long productQuantity;
 
-    private Double unitaryValue;
-
     private Double totalPrice;
+
+    private UserDTO user;
+
+    private ProductDTO product;
+
+    private SaleDTO sale;
+
+    public Boolean getFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(Boolean finished) {
+        isFinished = finished;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
+    public ProductDTO getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductDTO product) {
+        this.product = product;
+    }
+
+    public SaleDTO getSale() {
+        return sale;
+    }
+
+    public void setSale(SaleDTO sale) {
+        this.sale = sale;
+    }
 
     public Long getId() {
         return id;
@@ -40,14 +79,6 @@ public class PurchaseItemDTO implements Serializable {
 
     public void setProductQuantity(Long productQuantity) {
         this.productQuantity = productQuantity;
-    }
-
-    public Double getUnitaryValue() {
-        return unitaryValue;
-    }
-
-    public void setUnitaryValue(Double unitaryValue) {
-        this.unitaryValue = unitaryValue;
     }
 
     public Double getTotalPrice() {
@@ -86,7 +117,6 @@ public class PurchaseItemDTO implements Serializable {
             "id=" + getId() +
             ", isFinished='" + getIsFinished() + "'" +
             ", productQuantity=" + getProductQuantity() +
-            ", unitaryValue=" + getUnitaryValue() +
             ", totalPrice=" + getTotalPrice() +
             "}";
     }

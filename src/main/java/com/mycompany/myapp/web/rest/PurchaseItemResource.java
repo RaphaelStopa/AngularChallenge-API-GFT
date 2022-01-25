@@ -46,13 +46,6 @@ public class PurchaseItemResource {
         this.purchaseItemRepository = purchaseItemRepository;
     }
 
-    /**
-     * {@code POST  /purchase-items} : Create a new purchaseItem.
-     *
-     * @param purchaseItemDTO the purchaseItemDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new purchaseItemDTO, or with status {@code 400 (Bad Request)} if the purchaseItem has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PostMapping("/purchase-items")
     public ResponseEntity<PurchaseItemDTO> createPurchaseItem(@RequestBody PurchaseItemDTO purchaseItemDTO) throws URISyntaxException {
         log.debug("REST request to save PurchaseItem : {}", purchaseItemDTO);
@@ -66,16 +59,6 @@ public class PurchaseItemResource {
             .body(result);
     }
 
-    /**
-     * {@code PUT  /purchase-items/:id} : Updates an existing purchaseItem.
-     *
-     * @param id the id of the purchaseItemDTO to save.
-     * @param purchaseItemDTO the purchaseItemDTO to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated purchaseItemDTO,
-     * or with status {@code 400 (Bad Request)} if the purchaseItemDTO is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the purchaseItemDTO couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PutMapping("/purchase-items/{id}")
     public ResponseEntity<PurchaseItemDTO> updatePurchaseItem(
         @PathVariable(value = "id", required = false) final Long id,
@@ -100,17 +83,6 @@ public class PurchaseItemResource {
             .body(result);
     }
 
-    /**
-     * {@code PATCH  /purchase-items/:id} : Partial updates given fields of an existing purchaseItem, field will ignore if it is null
-     *
-     * @param id the id of the purchaseItemDTO to save.
-     * @param purchaseItemDTO the purchaseItemDTO to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated purchaseItemDTO,
-     * or with status {@code 400 (Bad Request)} if the purchaseItemDTO is not valid,
-     * or with status {@code 404 (Not Found)} if the purchaseItemDTO is not found,
-     * or with status {@code 500 (Internal Server Error)} if the purchaseItemDTO couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PatchMapping(value = "/purchase-items/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<PurchaseItemDTO> partialUpdatePurchaseItem(
         @PathVariable(value = "id", required = false) final Long id,
@@ -136,12 +108,6 @@ public class PurchaseItemResource {
         );
     }
 
-    /**
-     * {@code GET  /purchase-items} : get all the purchaseItems.
-     *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of purchaseItems in body.
-     */
     @GetMapping("/purchase-items")
     public ResponseEntity<List<PurchaseItemDTO>> getAllPurchaseItems(Pageable pageable) {
         log.debug("REST request to get a page of PurchaseItems");
@@ -150,12 +116,6 @@ public class PurchaseItemResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    /**
-     * {@code GET  /purchase-items/:id} : get the "id" purchaseItem.
-     *
-     * @param id the id of the purchaseItemDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the purchaseItemDTO, or with status {@code 404 (Not Found)}.
-     */
     @GetMapping("/purchase-items/{id}")
     public ResponseEntity<PurchaseItemDTO> getPurchaseItem(@PathVariable Long id) {
         log.debug("REST request to get PurchaseItem : {}", id);
@@ -163,12 +123,6 @@ public class PurchaseItemResource {
         return ResponseUtil.wrapOrNotFound(purchaseItemDTO);
     }
 
-    /**
-     * {@code DELETE  /purchase-items/:id} : delete the "id" purchaseItem.
-     *
-     * @param id the id of the purchaseItemDTO to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
     @DeleteMapping("/purchase-items/{id}")
     public ResponseEntity<Void> deletePurchaseItem(@PathVariable Long id) {
         log.debug("REST request to delete PurchaseItem : {}", id);

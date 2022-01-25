@@ -11,6 +11,10 @@ public class UserDTO {
 
     private String login;
 
+    private String firstName;
+
+    private String lastName;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }

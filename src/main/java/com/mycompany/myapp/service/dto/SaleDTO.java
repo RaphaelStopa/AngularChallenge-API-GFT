@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-/**
- * A DTO for the {@link com.mycompany.myapp.domain.Sale} entity.
- */
 public class SaleDTO implements Serializable {
 
     private Long id;
@@ -16,6 +13,16 @@ public class SaleDTO implements Serializable {
     private Double value;
 
     private String cep;
+
+    private UserDTO user;
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
