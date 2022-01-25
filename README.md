@@ -40,3 +40,7 @@ tirei o valor unitario do itens da compra pq qle ja referencia um produto
 tinha que validar os campos do back end
 
 folta tratar todas as fotos
+
+centralizar o nem um produto cadrastrado
+
+o botao de excluir nao atualiza a pagina tambem e da um erro caso o id ja nao exista
