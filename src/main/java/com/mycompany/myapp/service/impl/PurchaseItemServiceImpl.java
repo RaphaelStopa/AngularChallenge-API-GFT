@@ -2,9 +2,12 @@ package com.mycompany.myapp.service.impl;
 
 import com.mycompany.myapp.domain.PurchaseItem;
 import com.mycompany.myapp.repository.PurchaseItemRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.PurchaseItemService;
 import com.mycompany.myapp.service.dto.PurchaseItemDTO;
 import com.mycompany.myapp.service.mapper.PurchaseItemMapper;
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +16,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Service Implementation for managing {@link PurchaseItem}.
- */
 @Service
 @Transactional
 public class PurchaseItemServiceImpl implements PurchaseItemService {
@@ -26,9 +26,16 @@ public class PurchaseItemServiceImpl implements PurchaseItemService {
 
     private final PurchaseItemMapper purchaseItemMapper;
 
-    public PurchaseItemServiceImpl(PurchaseItemRepository purchaseItemRepository, PurchaseItemMapper purchaseItemMapper) {
+    private final UserRepository userRepository;
+
+    public PurchaseItemServiceImpl(
+        PurchaseItemRepository purchaseItemRepository,
+        PurchaseItemMapper purchaseItemMapper,
+        UserRepository userRepository
+    ) {
         this.purchaseItemRepository = purchaseItemRepository;
         this.purchaseItemMapper = purchaseItemMapper;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -59,6 +66,13 @@ public class PurchaseItemServiceImpl implements PurchaseItemService {
     public Page<PurchaseItemDTO> findAll(Pageable pageable) {
         log.debug("Request to get all PurchaseItems");
         return purchaseItemRepository.findAll(pageable).map(purchaseItemMapper::toDto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PurchaseItemDTO> findAllByUser() {
+        var user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).orElseThrow();
+        var listOfItems = purchaseItemRepository.findAllByUserId(user.getId());
+        return purchaseItemMapper.toList(listOfItems);
     }
 
     @Override

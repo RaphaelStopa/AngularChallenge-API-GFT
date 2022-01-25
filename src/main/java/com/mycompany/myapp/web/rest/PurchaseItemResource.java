@@ -116,6 +116,13 @@ public class PurchaseItemResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/purchase-items-by-user")
+    public ResponseEntity<List<PurchaseItemDTO>> getAllPurchaseItemsbyUser() {
+        log.debug("REST request to get a page of PurchaseItems");
+        List<PurchaseItemDTO> page = purchaseItemService.findAllByUser();
+        return ResponseEntity.ok().body(page);
+    }
+
     @GetMapping("/purchase-items/{id}")
     public ResponseEntity<PurchaseItemDTO> getPurchaseItem(@PathVariable Long id) {
         log.debug("REST request to get PurchaseItem : {}", id);
