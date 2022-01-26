@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface PurchaseItemRepository extends JpaRepository<PurchaseItem, Long> {
-    List<PurchaseItem> findAllByUserId(Long id);
+    @Query(value = "SELECT * FROM purchase_item p WHERE p.is_finished = false AND  p.user_id = ?1", nativeQuery = true)
+    List<PurchaseItem> findAllByFinishedIsTrueAndUserId(Long id);
 }

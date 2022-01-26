@@ -73,7 +73,7 @@ public class PurchaseItemServiceImpl implements PurchaseItemService {
     @Transactional(readOnly = true)
     public List<PurchaseItemDTO> findAllByUser() {
         var user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).orElseThrow();
-        var listOfItems = purchaseItemRepository.findAllByUserId(user.getId());
+        var listOfItems = purchaseItemRepository.findAllByFinishedIsTrueAndUserId(user.getId());
         return purchaseItemMapper.toList(listOfItems);
     }
 

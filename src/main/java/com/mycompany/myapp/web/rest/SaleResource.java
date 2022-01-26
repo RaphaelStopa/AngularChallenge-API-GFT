@@ -45,7 +45,6 @@ public class SaleResource {
 
     @PostMapping("/sales")
     public ResponseEntity<SaleDTO> createSale(@RequestBody SaleDTO saleDTO) throws URISyntaxException {
-        System.out.println("nhaaaaaaaaaaa");
         log.debug("REST request to save Sale : {}", saleDTO);
         if (saleDTO.getId() != null) {
             throw new BadRequestAlertException("A new sale cannot already have an ID", ENTITY_NAME, "idexists");
@@ -110,6 +109,13 @@ public class SaleResource {
         Page<SaleDTO> page = saleService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/sales-total")
+    public ResponseEntity<Double> getAllTotal() {
+        log.debug("REST request to get a page of Sales");
+        Double total = saleService.getTotal();
+        return ResponseEntity.ok().body(total);
     }
 
     @GetMapping("/sales/{id}")

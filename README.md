@@ -48,3 +48,7 @@ se existir token a pessoa sera logada na hora
 escrever que o site foi feito em css apesar de nao muito bonito esta reponsivo.
 
 'length no carrinho esta dando um erro
+
+escrever que o backend ficou responsavel por quase tudo na classe sale
+
+diminuri a quantidade de produto a medida que eh ventiddo

@@ -47,4 +47,6 @@ public interface SaleService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Double getTotal();
 }
