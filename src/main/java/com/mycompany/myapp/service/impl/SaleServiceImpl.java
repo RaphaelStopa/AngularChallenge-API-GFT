@@ -2,13 +2,16 @@ package com.mycompany.myapp.service.impl;
 
 import com.mycompany.myapp.domain.PurchaseItem;
 import com.mycompany.myapp.domain.Sale;
+import com.mycompany.myapp.repository.ProductRepository;
 import com.mycompany.myapp.repository.PurchaseItemRepository;
 import com.mycompany.myapp.repository.SaleRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.SaleService;
+import com.mycompany.myapp.service.UsernameAlreadyUsedException;
 import com.mycompany.myapp.service.dto.SaleDTO;
 import com.mycompany.myapp.service.mapper.SaleMapper;
+import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.time.Instant;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -35,16 +38,20 @@ public class SaleServiceImpl implements SaleService {
 
     private final PurchaseItemRepository purchaseItemRepository;
 
+    private final ProductRepository productRepository;
+
     public SaleServiceImpl(
         SaleRepository saleRepository,
         SaleMapper saleMapper,
         UserRepository userRepository,
-        PurchaseItemRepository purchaseItemRepository
+        PurchaseItemRepository purchaseItemRepository,
+        ProductRepository productRepository
     ) {
         this.saleRepository = saleRepository;
         this.saleMapper = saleMapper;
         this.userRepository = userRepository;
         this.purchaseItemRepository = purchaseItemRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -59,7 +66,14 @@ public class SaleServiceImpl implements SaleService {
         for (PurchaseItem item : listItems) {
             item.setSale(sale);
             item.setFinished(true);
-            purchaseItemRepository.save(item);
+            var prod = productRepository.findById(item.getProduct().getId()).orElseThrow();
+
+            if (prod.getQuantityStock() - item.getProductQuantity() < 0) {
+                throw new BadRequestAlertException("Produto sem estoque suficiente", "produto", "sem estoque");
+            } else {
+                prod.setQuantityStock(prod.getQuantityStock() - item.getProductQuantity());
+                purchaseItemRepository.save(item);
+            }
         }
         return saleMapper.toDto(sale);
     }
