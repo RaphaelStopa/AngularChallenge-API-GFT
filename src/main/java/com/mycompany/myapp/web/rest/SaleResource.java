@@ -45,6 +45,7 @@ public class SaleResource {
 
     @PostMapping("/sales")
     public ResponseEntity<SaleDTO> createSale(@RequestBody SaleDTO saleDTO) throws URISyntaxException {
+        System.out.println("nhaaaaaaaaaaa");
         log.debug("REST request to save Sale : {}", saleDTO);
         if (saleDTO.getId() != null) {
             throw new BadRequestAlertException("A new sale cannot already have an ID", ENTITY_NAME, "idexists");
