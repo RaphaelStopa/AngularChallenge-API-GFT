@@ -13,7 +13,9 @@ import com.mycompany.myapp.service.dto.SaleDTO;
 import com.mycompany.myapp.service.mapper.SaleMapper;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -125,5 +127,11 @@ public class SaleServiceImpl implements SaleService {
             purchaseItemRepository.save(item);
         }
         return value;
+    }
+
+    @Override
+    public List<SaleDTO> findAllByUserId() {
+        var user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).orElseThrow();
+        return saleRepository.findAllByUserId(user.getId()).stream().map(saleMapper::toDto).collect(Collectors.toList());
     }
 }

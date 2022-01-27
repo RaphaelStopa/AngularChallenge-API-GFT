@@ -115,11 +115,10 @@ public class SaleResource {
     }
 
     @GetMapping("/sales")
-    public ResponseEntity<List<SaleDTO>> getAllSales(Pageable pageable) {
+    public ResponseEntity<List<SaleDTO>> getAllSales() {
         log.debug("REST request to get a page of Sales");
-        Page<SaleDTO> page = saleService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        List<SaleDTO> page = saleService.findAllByUserId();
+        return ResponseEntity.ok().body(page);
     }
 
     @GetMapping("/sales-total")

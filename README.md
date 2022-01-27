@@ -38,3 +38,9 @@ se existir token a pessoa sera logada na hora
 escrever que o site foi feito em css apesar de nao muito bonito esta reponsivo.
 
 escrever que o backend ficou responsavel por quase tudo na classe sale
+
+dizer que o excendeten foi feito no back
+
+ver como o cara do projeto estava salvando as imagens
+
+escerever que os dados mostratados sao refententes a apenas o usurio apesar de eu nao passar o id dele na requisao e que o back paga o id do user que fez a requisicao pelo JWT
