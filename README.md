@@ -12,45 +12,29 @@ Este comando irá gerar um Docker MySql que o projeto irar usar. A possibilidade
 
 O CROS foi desabilitado no back-end.
 
+Normalmente, o correto e deixar o backEnd reposnsavel por toda logica. Foi o que fiz aqui (a classe Sale por exemplo, que corresponde ao "carrinho" da atividade, esta quase toda a cargo do back), mas para ganhar tempo para o front que eh o foco destas semana de estudo, fiz uns codigos aqui que jamais faria rm um projeto que vai para producao. Fiz para ganhar tempo.
+
+Consideracaoes: A classe "Carrinho de compra" eu transformei na classe "Sale". Na classe de itens comprados eu adicionei um campo boleano para vereificar se a compra ja foi concluida, titei o valor unitario e ja que esta classe ja aponta para a classe do produto que contem o mesmo dado e adicionei uma coluna de usurio para saber queme sta comprando.
+
 para eu lembrar
 nao aparece menssagem de erro no login
 
-eu modificquei no back-end a forma de castro e esta no minimo estranha
+[comment]: <> (eu modificquei no back-end a forma de castro e esta no minimo estranha)
 
-lembrar que escrever que cadrastrei a foto do produto da forma mais bizzara possivel, ja que esta nao era o objetivo
-o mesmo vale para a unidade de medida do prodito nao fiz um enum
+[comment]: <> (lembrar que escrever que cadrastrei a foto do produto da forma mais bizzara possivel, ja que esta nao era o objetivo)
+
+[comment]: <> (o mesmo vale para a unidade de medida do prodito nao fiz um enum)
 
 importante falar que a validade do token tambem eh vista
 
-carrinho virou sale
-
-no itens da compra
-is finished == bolean
-add um boleano pq dai isto indica se a compra foi finalizada ou nao, ou mesmo retira do carrinho
-id do user para buscar pelo usuario os itents == == @OneToOne
-@JoinColumn(unique = true)
-private User user;
-
 falta a imagem eu fiz um blop mais teria que descomentar
-
-tirei o valor unitario do itens da compra pq qle ja referencia um produto
-
-tinha que validar os campos do back end
 
 folta tratar todas as fotos
 
-centralizar o nem um produto cadrastrado
-
-nao mostrei a entidade de compra finalizada mais ela esta la
+nao mostrei a entidade de compra finalizada mais ela esta la fazer isto aqui se tiver tempo
 
 se existir token a pessoa sera logada na hora
 
 escrever que o site foi feito em css apesar de nao muito bonito esta reponsivo.
 
-'length no carrinho esta dando um erro
-
 escrever que o backend ficou responsavel por quase tudo na classe sale
-
-diminuri a quantidade de produto a medida que eh ventiddo
-
-escrever que a validacao de cep geralmente eh feita no back end mais como este era um exercicio de angular fiz la na verdaee fiz no back, esplicar pq

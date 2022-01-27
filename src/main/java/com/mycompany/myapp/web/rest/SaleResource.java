@@ -4,11 +4,17 @@ import com.mycompany.myapp.repository.SaleRepository;
 import com.mycompany.myapp.service.SaleService;
 import com.mycompany.myapp.service.dto.SaleDTO;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -105,9 +111,7 @@ public class SaleResource {
 
     @GetMapping("/sales-cep/{code}")
     public ResponseEntity<Boolean> getValidateZipCode(@PathVariable String code) {
-        System.out.println(code);
-        Boolean zipCode = true;
-        return ResponseEntity.ok().body(zipCode);
+        return ResponseEntity.ok().body(verifiZipcode(code));
     }
 
     @GetMapping("/sales")
@@ -140,5 +144,41 @@ public class SaleResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    public static final String getHttpGET(String urlToRead) {
+        StringBuilder result = new StringBuilder();
+
+        try {
+            URL url = new URL(urlToRead);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (IOException ex) {}
+
+        return result.toString();
+    }
+
+    public static boolean verifiZipcode(String zipcode) {
+        String newZipcode = zipcode.replaceAll("[^0-9]", "");
+
+        if (newZipcode.length() != 8) {
+            return false;
+        } else {
+            String url = "https://api.invertexto.com/v1/cep/" + newZipcode + "?token=363|hBS8Be7ymI5zOkFDWw5pDkcthZtjxhqw";
+
+            JSONObject obj = new JSONObject(getHttpGET(url));
+
+            if (obj.has("cep")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
