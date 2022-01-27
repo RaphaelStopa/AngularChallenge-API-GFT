@@ -5,6 +5,7 @@ import com.mycompany.myapp.repository.ProductRepository;
 import com.mycompany.myapp.service.ProductService;
 import com.mycompany.myapp.service.dto.ProductDTO;
 import com.mycompany.myapp.service.mapper.ProductMapper;
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Service Implementation for managing {@link Product}.
- */
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
@@ -55,10 +53,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<ProductDTO> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProductDTO> findAll() {
         log.debug("Request to get all Products");
-        return productRepository.findAll(pageable).map(productMapper::toDto);
+        return productMapper.toList(productRepository.findAllByQuantityStockGreaterThanZero());
     }
 
     @Override

@@ -24,6 +24,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
@@ -50,7 +51,7 @@ public class SaleResource {
     }
 
     @PostMapping("/sales")
-    public ResponseEntity<SaleDTO> createSale(@RequestBody SaleDTO saleDTO) throws URISyntaxException {
+    public ResponseEntity<SaleDTO> createSale(@ModelAttribute SaleDTO saleDTO) throws URISyntaxException {
         log.debug("REST request to save Sale : {}", saleDTO);
         if (saleDTO.getId() != null) {
             throw new BadRequestAlertException("A new sale cannot already have an ID", ENTITY_NAME, "idexists");

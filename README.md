@@ -12,7 +12,7 @@ Este comando irá gerar um Docker MySql que o projeto irar usar. A possibilidade
 
 O CROS foi desabilitado no back-end.
 
-Normalmente, o correto e deixar o backEnd reposnsavel por toda logica. Foi o que fiz aqui (a classe Sale por exemplo, que corresponde ao "carrinho" da atividade, esta quase toda a cargo do back), mas para ganhar tempo para o front que eh o foco destas semana de estudo, fiz uns codigos aqui que jamais faria rm um projeto que vai para producao. Fiz para ganhar tempo.
+Normalmente, o correto e deixar o backEnd reposnsavel por toda logica. Foi o que fiz aqui (a classe Sale por exemplo, que corresponde ao "carrinho" da atividade, esta quase toda a cargo do back), mas para ganhar tempo para o front que eh o foco destas semana de estudo, fiz uns codigos aqui que jamais faria rm um projeto (como o metodo que usei para salvar imagens) que vai para producao. Fiz para ganhar tempo.
 
 Consideracaoes: A classe "Carrinho de compra" eu transformei na classe "Sale". Na classe de itens comprados eu adicionei um campo boleano para vereificar se a compra ja foi concluida, titei o valor unitario e ja que esta classe ja aponta para a classe do produto que contem o mesmo dado e adicionei uma coluna de usurio para saber queme sta comprando.
 
