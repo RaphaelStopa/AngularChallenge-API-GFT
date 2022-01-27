@@ -103,6 +103,13 @@ public class SaleResource {
         );
     }
 
+    @GetMapping("/sales-cep/{code}")
+    public ResponseEntity<Boolean> getValidateZipCode(@PathVariable String code) {
+        System.out.println(code);
+        Boolean zipCode = true;
+        return ResponseEntity.ok().body(zipCode);
+    }
+
     @GetMapping("/sales")
     public ResponseEntity<List<SaleDTO>> getAllSales(Pageable pageable) {
         log.debug("REST request to get a page of Sales");

@@ -52,3 +52,5 @@ escrever que o site foi feito em css apesar de nao muito bonito esta reponsivo.
 escrever que o backend ficou responsavel por quase tudo na classe sale
 
 diminuri a quantidade de produto a medida que eh ventiddo
+
+escrever que a validacao de cep geralmente eh feita no back end mais como este era um exercicio de angular fiz la na verdaee fiz no back, esplicar pq
