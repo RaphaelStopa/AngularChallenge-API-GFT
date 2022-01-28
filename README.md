@@ -1,6 +1,6 @@
-# angularChallenge
+# angularChallenge BackEnd
 
-O front-end deste projeto de encontra neste repositório:
+O Front-End deste projeto de encontra neste repositório:
 
 Com a permissão do instrutor Ubiratan Roberte Cardoso Passos, esta API foi feita em Jhipster para o desafio de Angular. Como tal ele roda e aceita comandos predefinidos como qualquer projeto de Jhipster. O mais “importante” para esta etapa de avaliação é o:
 
@@ -12,35 +12,28 @@ Este comando irá gerar um Docker MySql que o projeto irar usar. A possibilidade
 
 O CROS foi desabilitado no back-end.
 
-Normalmente, o correto e deixar o backEnd reposnsavel por toda logica. Foi o que fiz aqui (a classe Sale por exemplo, que corresponde ao "carrinho" da atividade, esta quase toda a cargo do back), mas para ganhar tempo para o front que eh o foco destas semana de estudo, fiz uns codigos aqui que jamais faria rm um projeto (como o metodo que usei para salvar imagens) que vai para producao. Fiz para ganhar tempo.
+Normalmente, o correto e deixar o backEnd responsável por toda logica. Foi o que fiz aqui (a classe Sale por exemplo, que corresponde ao "carrinho" da atividade, está quase toda a cargo do back), mas para ganhar tempo para o front, que é o foco desta semana de estudo, fiz uns códigos aqui que jamais faria em um projeto que vai para produção (como o método que usei para salvar imagens). Fiz para ganhar tempo.
 
-Consideracaoes: A classe "Carrinho de compra" eu transformei na classe "Sale". Na classe de itens comprados eu adicionei um campo boleano para vereificar se a compra ja foi concluida, titei o valor unitario e ja que esta classe ja aponta para a classe do produto que contem o mesmo dado e adicionei uma coluna de usurio para saber queme sta comprando.
+Considerações: A classe "Carrinho de compra" eu transformei na classe "Sale". Na classe de itens comprados eu adicionei um campo booleano para verificar se a compra já foi concluída, tirei o valor unitário do item, já que esta classe já aponta para a classe do produto que contém o mesmo dado. Adicionei também uma coluna de usuário para saber quem esta comprando.
 
-para eu lembrar
-nao aparece menssagem de erro no login
+# angularChallenge FrontEnd
 
-[comment]: <> (eu modificquei no back-end a forma de castro e esta no minimo estranha)
+O Back-End deste projeto de encontra neste repositório:
 
-[comment]: <> (lembrar que escrever que cadrastrei a foto do produto da forma mais bizzara possivel, ja que esta nao era o objetivo)
+Quanto ao Front-End não tem muito que se falar. Ele roda como um projeto normal do Angular. Todavia, para facilitar a avalição segue uns adendos:
 
-[comment]: <> (o mesmo vale para a unidade de medida do prodito nao fiz um enum)
+O projeto já vem com dois users cadastrados:
 
-importante falar que a validade do token tambem eh vista
+```
+Login: user
+Senha: user
+---
+Login: admin
+Senha: admin
+```
 
-falta a imagem eu fiz um blop mais teria que descomentar
+O projeto obviamente respeita, todo q qualquer dado do usuário. Assim, o usuário só poderá ver os dados que a ele pertence.
 
-folta tratar todas as fotos
+O token de acesso tem sua data de expiração validada. Se o projeto identifica o token, ele loga automaticamente. Ai clicar em sair o token é excluído
 
-nao mostrei a entidade de compra finalizada mais ela esta la fazer isto aqui se tiver tempo
-
-se existir token a pessoa sera logada na hora
-
-escrever que o site foi feito em css apesar de nao muito bonito esta reponsivo.
-
-escrever que o backend ficou responsavel por quase tudo na classe sale
-
-dizer que o excendeten foi feito no back
-
-ver como o cara do projeto estava salvando as imagens
-
-escerever que os dados mostratados sao refententes a apenas o usurio apesar de eu nao passar o id dele na requisao e que o back paga o id do user que fez a requisicao pelo JWT
+O excedente do desafio, a validação de CEP, é obviamente feita no BackEnd, por questões obvias de segurança.

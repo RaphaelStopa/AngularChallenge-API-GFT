@@ -14,6 +14,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * A user.
@@ -41,6 +42,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String password;
 
     @JsonIgnore
+    @CPF
     @NotNull
     @Size(min = 9, max = 15)
     @Column(name = "cpf", length = 15, nullable = false)
